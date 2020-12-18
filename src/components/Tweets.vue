@@ -1,32 +1,32 @@
 <template>
     <div>
+        <button @click="toggleView">
+            {{ buttonText }}
+        </button>
 
-        <button @click="toggleView">Toggle View</button>
-        <div id="tweets" :class="{'list-view': lisView}" >
+        <div class="tweets" :class="{'list-view': gridView}" >
             <article class="tweet" v-for="(tweet, index) in tweets" :key="index">
-                <h4> {{tweets.author}}</h4>
-                <h6> {{tweets.data}}</h6>
-                <p> {{tweets.text}}</p>
-                {{tweet.text}}
+                <h4> {{tweet.author}}</h4>
+                <h6> {{tweet.data}}</h6>
+                <p> {{tweet.text}}</p>
             </article>
-
         </div>
-
     </div>
-
 </template>
 
 <script>
 export default {
-    name: 'vue-tweets',
+    name: 'Tweets',
+
     data() {
         return {
-            listView: true,
+            gridView: false,
+            buttonText: 'List view',
             tweets: [
                 {
                     author: 'Felipe',
                     date: 'December 12, 2020',
-                    text: 'Hello world I am tweet!!!'
+                    text: 'Whats up Boyzzz!!!'
                 },
                 {
                     author: 'Luan',
@@ -41,41 +41,40 @@ export default {
             ]
         }
     },
+
     methods: {
         toggleView() {
-            this.listView = !this.listView;
-            if(this.listView == true) {
-                document.querySelector('button').innerText = "List View";
-            }else{
-                document.querySelector('button').innerText = "Gtid View";
-            }
-        }
+            this.gridView = !this.gridView;
+            this.buttonText = !this.gridView ? 'Grid view' : 'List view'
+        }    
     }
     
 }
 </script>
 
 <style scoped>
-    #tweets {
+    .tweets {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 1rem;
         padding: 1rem;
     }
-    #tweets.list-view {
+
+    .tweets.list-view {
         grid-template-columns: 1fr;
 
     }
-    article {
+
+    .tweet {
         padding: 1rem;
         margin: 1rem;
         background-color: skyblue;
     }
+
     @media only screen and (min-width: 991px){
-        #tweets{
+        .tweets {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-
         }
     }
 

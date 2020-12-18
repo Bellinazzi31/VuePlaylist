@@ -1,26 +1,29 @@
 <template>
   <div id="app">
-    <vue-tweets></vue-tweets>
-    <vue-container></vue-container>
-  
+    <TweetsContainer>
+      <Tweets />
+    </TweetsContainer>
   </div>
 </template>
 
 <script>
 
-import VueTweets from './components/Tweets'
-import VueContainer from './components/TweetContainer'
+import Tweets from './components/Tweets'
+import TweetsContainer from './components/TweetContainer'
 
 export default {
   name: 'App',
+
   components: {
-    VueTweets,
-    VueContainer,
+    Tweets,
+    TweetsContainer,
   }
 }
 </script>
 
 <style lang="scss">
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

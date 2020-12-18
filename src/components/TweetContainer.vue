@@ -1,20 +1,15 @@
 <template>
-    <div>
+    <div class="container">
         <h3>Tweets</h3>
+
+        <slot />
     </div>
 </template>
 
 <script>
 export default {
-    name: 'vue-container',
-    data(){
-        return{
-
-        }
-    }
+    name: 'TweetsContainer',
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
